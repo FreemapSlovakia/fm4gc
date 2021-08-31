@@ -4,7 +4,7 @@
   "name": "fm4gc",
   "version": "1.0",
 
-  "description": "Adds Freemap Outdoor and Ortofotomozaika SR map layers to https://www.geocaching.com/map/",
+  "description": "Adds Freemap Outdoor and Ortofotomozaika SR map layers to www.geocaching.com and adds link to open cache on www.freemap.sk.",
 
   "icons": {
     "48": "icons/icon-48.png"
@@ -13,7 +13,17 @@
   "content_scripts": [
     {
       "matches": ["https://www.geocaching.com/map/"],
-      "js": ["fm4gc.js"],
+      "js": ["map.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://www.geocaching.com/play/*"],
+      "js": ["play_map.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://www.geocaching.com/geocache/*"],
+      "js": ["geocache.js"],
       "run_at": "document_end"
     }
   ]
