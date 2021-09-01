@@ -1,8 +1,11 @@
 {
 
   "manifest_version": 2,
-  "name": "fm4gc",
+  "name": "Freemap.sk for Geocaching",
+  "short_name": "fm4gc",
   "version": "1.0",
+
+  "author": "Martin Ždila (Freemap Slovakia)",
 
   "description": "Adds Freemap Outdoor and Ortofotomozaika SR map layers to www.geocaching.com and adds link to open cache on www.freemap.sk.",
 
@@ -13,17 +16,18 @@
   "content_scripts": [
     {
       "matches": ["https://www.geocaching.com/map/"],
-      "js": ["map.js"],
+      "js": ["common.js", "map.js"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://www.geocaching.com/play/*"],
-      "js": ["play_map.js"],
+      "js": ["common.js", "play_map.js"],
+      "css": ["play_map.css"],
       "run_at": "document_end"
     },
     {
       "matches": ["https://www.geocaching.com/geocache/*"],
-      "js": ["geocache.js"],
+      "js": ["common.js", "geocache.js"],
       "run_at": "document_end"
     }
   ]
