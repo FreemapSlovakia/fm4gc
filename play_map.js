@@ -1,21 +1,7 @@
-const head = document.getElementsByTagName('head')[0];
+const commonScript = document.createElement("script");
+commonScript.src = chrome.runtime.getURL("common-injected.js");
+document.documentElement.appendChild(commonScript);
 
-const s = document.createElement('script');
-
-s.textContent = `
-  L.Map.addInitHook(function () {
-    ${common}
-
-    L.control.layers(
-      {
-        'Default': L.tileLayer(''),
-        'Freemap Outdoor': freemapLayer,
-        'Ortofotomozaika SR': ortoLayer,
-      }
-    ).addTo(this);
-
-    freemapLayer.addTo(this);
-  });
-`;
-
-head.insertBefore(s, head.firstChild);
+const script = document.createElement("script");
+script.src = chrome.runtime.getURL("play_map-injected.js");
+document.documentElement.appendChild(script);

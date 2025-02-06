@@ -1,9 +1,8 @@
 {
-
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Freemap.sk for Geocaching",
   "short_name": "fm4gc",
-  "version": "1.0",
+  "version": "1.1",
 
   "author": "Martin Ždila (Freemap Slovakia)",
 
@@ -16,20 +15,30 @@
   "content_scripts": [
     {
       "matches": ["https://www.geocaching.com/map/"],
-      "js": ["common.js", "map.js"],
-      "run_at": "document_end"
+      "js": ["map.js"],
+      "run_at": "document_start"
     },
     {
-      "matches": ["https://www.geocaching.com/play/*"],
-      "js": ["common.js", "play_map.js"],
+      "matches": ["https://www.geocaching.com/live/play/*"],
+      "js": ["play_map.js"],
       "css": ["play_map.css"],
-      "run_at": "document_end"
+      "run_at": "document_start"
     },
     {
       "matches": ["https://www.geocaching.com/geocache/*"],
-      "js": ["common.js", "geocache.js"],
-      "run_at": "document_end"
+      "js": ["geocache.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "common-injected.js",
+        "map-injected.js",
+        "play_map-injected.js",
+        "geocache-injected.js"
+      ],
+      "matches": ["<all_urls>"]
     }
   ]
-
 }

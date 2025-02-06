@@ -1,15 +1,7 @@
-const head = document.getElementsByTagName('head')[0];
+const commonScript = document.createElement("script");
+commonScript.src = chrome.runtime.getURL("common-injected.js");
+document.documentElement.appendChild(commonScript);
 
-const s = document.createElement('script');
-
-s.textContent = `
-  L.Control.Layers.addInitHook(function () {
-    ${common}
-
-    this.addBaseLayer(freemapLayer, 'Freemap Outdoor');
-
-    this.addBaseLayer(ortoLayer, 'Ortofotomozaika SR');
-  });
-`;
-
-head.insertBefore(s, head.firstChild);
+const script = document.createElement("script");
+script.src = chrome.runtime.getURL("map-injected.js");
+document.documentElement.appendChild(script);
